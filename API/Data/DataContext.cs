@@ -1,4 +1,6 @@
 ﻿using API.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -10,14 +12,12 @@ using System.Threading.Tasks;
 
 namespace API.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<AppUser, AppRole, int, IdentityUserClaim<int>, AppUserRole, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         public DataContext(DbContextOptions options) : base(options)
         {
         }
-
-        public DbSet<AppUser> Users { get; set; }
-        public DbSet<MoneyAccount> Accounts { get; set; }
+        public DbSet<MoneyAccount> MoneyAccounts { get; set; }
         public DbSet<AccountTransaction> Transactions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -25,15 +25,33 @@ namespace API.Data
             base.OnModelCreating(builder);
 
             builder.Entity<AppUser>()
-                .HasMany(u => u.Accounts)
+                .HasMany(u => u.MoneyAccounts)
                 .WithOne(o => o.Owner)
                 .HasForeignKey(ua => ua.Id)
                 .IsRequired();
 
             builder.Entity<MoneyAccount>()
+                .HasOne(o => o.Owner)
+                .WithMany(a => a.MoneyAccounts)
+                .HasForeignKey(ao => ao.Id)
+                .IsRequired();
+
+            builder.Entity<MoneyAccount>()
                 .HasMany(t => t.Transactions)
-                .WithOne(a => a.AddedToAccount)
+                .WithOne(a => a.BaseMoneyAccount)
                 .HasForeignKey(at => at.Id)
+                .IsRequired();
+
+            builder.Entity<AppUser>()
+                .HasMany(ur => ur.UserRoles)
+                .WithOne(u => u.User)
+                .HasForeignKey(ur => ur.UserId)
+                .IsRequired();
+
+            builder.Entity<AppRole>()
+                .HasMany(ur => ur.UserRoles)
+                .WithOne(u => u.Role)
+                .HasForeignKey(ur => ur.RoleId)
                 .IsRequired();
 
             builder.ApplyUtcDateTimeConverter();

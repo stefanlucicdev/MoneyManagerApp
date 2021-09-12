@@ -1,0 +1,86 @@
+[
+  {
+    "UserName": "admin",
+    "FirstName": "admin",
+    "DateOfBirth": "1987-10-17",
+    "LastName": "admin",
+    "Created": "2019-11-04",
+    "Country": "Serbia",
+    "MonthlyCashFlow": 0,
+    "YearlyCashFlow": 0,
+    "CurrentBalance": 0,
+    "MoneyAccounts": [
+      {
+        "Id": 1,
+        "Name": "Cash",
+        "ExcludeFromTotal": false,
+        "Currency": "USD",
+        "InitialBalance": 0,
+        "CurrentBalance": 10,
+        "MonthlyCashFlow": 0,
+        "YearlyCashFlow": 0,
+        "Transactions": [
+          {
+
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "UserName": "olga",
+    "FirstName": "olga",
+    "DateOfBirth": "1996-07-12",
+    "LastName": "tester",
+    "Created": "2019-12-02",
+    "Country": "Italy",
+    "MonthlyCashFlow": 0,
+    "YearlyCashFlow": 0,
+    "CurrentBalance": 0,
+    "MoneyAccounts": [
+      {
+        "Id": 2,
+        "Name": "Cash",
+        "ExcludeFromTotal": false,
+        "Currency": "USD",
+        "InitialBalance": 0,
+        "CurrentBalance": 0,
+        "MonthlyCashFlow": 0,
+        "YearlyCashFlow": 0,
+        "Transactions": [
+          {
+
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "UserName": "Laura",
+    "FirstName": "laura",
+    "LastName": "testing",
+    "DateOfBirth": "1974-12-03",
+    "Created": "2019-04-04",
+    "Country": "Belgium",
+    "MonthlyCashFlow": 0,
+    "YearlyCashFlow": 0,
+    "CurrentBalance": 0,
+    "MoneyAccounts": [
+      {
+        "Id": 3,
+        "Name": "Cash",
+        "ExcludeFromTotal": false,
+        "Currency": "USD",
+        "InitialBalance": 0,
+        "CurrentBalance": 0,
+        "MonthlyCashFlow": 0,
+        "YearlyCashFlow": 0,
+        "Transactions": [
+          {
+
+          }
+        ]
+      }
+    ]
+  }
+]
