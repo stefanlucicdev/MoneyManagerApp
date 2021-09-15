@@ -9,8 +9,8 @@ namespace API.DTOs
 {
     public class MoneyAccountDto
     {
-        public int Id { get; set; }
-        public int OwnerId { get; set; }
+        //public int Id { get; set; }
+        //public int OwnerId { get; set; }
         [Required]
         public string Name { get; set; } = "New Account";
         public bool ExcludeFromTotal { get; set; } = false;

@@ -1,6 +1,7 @@
 ﻿using API.Data;
 using API.DTOs;
 using API.Entities;
+using API.Extensions;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
+
 
 namespace API.Controllers
 {
@@ -25,11 +28,16 @@ namespace API.Controllers
         [HttpPost("add-account")]
         public async Task<ActionResult> AddMoneyAccount(MoneyAccountDto moneyAccountDto)
         {
-            var owner = await _unitOfWork.UserRepository.GetUserByIdAsync(moneyAccountDto.OwnerId);
+            //var owner = await _unitOfWork.UserRepository.GetUserByIdAsync(moneyAccountDto.OwnerId);
+
+            var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(User.GetUsername());
+
+            if (user != null) { 
 
             var moneyAccount = new MoneyAccount()
             {
-                Owner = owner,
+                Owner = user,
+                OwnerId = user.Id,
                 Name = moneyAccountDto.Name,
                 ExcludeFromTotal = moneyAccountDto.ExcludeFromTotal,
                 Currency = moneyAccountDto.Currency,
@@ -39,6 +47,7 @@ namespace API.Controllers
             _unitOfWork.UserRepository.AddMoneyAccount(moneyAccount);
 
             if (await _unitOfWork.Complete()) return Ok();
+            }
 
             return BadRequest("Failed to add a money account");
         }

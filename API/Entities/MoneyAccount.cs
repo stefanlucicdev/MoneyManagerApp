@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace API.Entities
 {
     public class MoneyAccount
     {
+        [ScaffoldColumn(false)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
+        public int OwnerId { get; set; }
         public AppUser Owner { get; set; }
         public bool ExcludeFromTotal { get; set; }
         public string Currency { get; set; }

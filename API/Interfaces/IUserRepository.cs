@@ -13,5 +13,6 @@ namespace API.Interfaces
         void Update(AppUser user);
         Task<AppUser> GetUserByIdAsync(int id);
         void AddMoneyAccount(MoneyAccount moneyAccount);
+        Task<AppUser> GetUserByUsernameAsync(string username);
     }
 }

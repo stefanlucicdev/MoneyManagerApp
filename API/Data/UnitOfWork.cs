@@ -17,7 +17,9 @@ namespace API.Data
             _context = context;
             _mapper = mapper;
         }
+
         public IUserRepository UserRepository => new UserRepository(_context, _mapper);
+
         public async Task<bool> Complete()
         {
             return await _context.SaveChangesAsync() > 0;

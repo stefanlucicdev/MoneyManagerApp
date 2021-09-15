@@ -33,7 +33,7 @@ namespace API.Data
             builder.Entity<MoneyAccount>()
                 .HasOne(o => o.Owner)
                 .WithMany(a => a.MoneyAccounts)
-                .HasForeignKey(ao => ao.Id)
+                .HasForeignKey(ao => ao.OwnerId)
                 .IsRequired();
 
             builder.Entity<MoneyAccount>()

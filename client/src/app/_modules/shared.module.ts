@@ -6,6 +6,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -14,6 +15,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CommonModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    }),
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
     ButtonsModule.forRoot(),
@@ -22,6 +26,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
   exports: [
     BsDropdownModule,
     TabsModule,
+    ToastrModule,
     BsDatepickerModule,
     PaginationModule,
     ButtonsModule,
