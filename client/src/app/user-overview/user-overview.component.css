@@ -7,3 +7,20 @@
   background-color: white;
   color: rgba(15,37,55,255);
 }
+
+.btn-secondary {
+  background-color: #305f72;
+  color: white;
+}
+
+.btn-dark {
+  background-color: #4d918f;
+  border-color: #4d918f;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #e5e6eb;
+  border-color: #e5e6eb;
+  color: black;
+}

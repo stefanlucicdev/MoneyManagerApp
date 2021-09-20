@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #8ec3b3;
+}
+
+.btn-danger,
+.btn-danger:hover,
+.btn-danger:active,
+.btn-danger:visited,
+.btn-danger:focus {
+  background-color: #f5907b !important;
+  border-color: #f5907b !important;
+}
+
+.btn-info,
+.btn-info:hover,
+.btn-info:active,
+.btn-info:visited,
+.btn-info:focus {
+  background-color: #f7ca89 !important;
+  border-color: #f7ca89 !important;
+}
+
+.btn-success,
+.btn-success:hover,
+.btn-success:active,
+.btn-success:visited,
+.btn-success:focus {
+  background-color: #4d918f !important;
+  border-color: #4d918f !important;
+}
