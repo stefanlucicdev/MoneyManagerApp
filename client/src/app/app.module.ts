@@ -14,6 +14,7 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { SharedModule } from './_modules/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddMoneyAccountComponent } from './modals/add-money-account/add-money-account.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GetStartedComponent,
     UserOverviewComponent,
     TextInputComponent,
-    DateInputComponent
+    DateInputComponent,
+    AddMoneyAccountComponent
   ],
   imports: [
     BrowserModule,
