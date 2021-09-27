@@ -19,7 +19,7 @@ export class UserOverviewComponent implements OnInit {
 
   constructor(private modalService: BsModalService, private memberService: MembersService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getMoneyAccounts();
   }
 

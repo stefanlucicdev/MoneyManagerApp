@@ -39,13 +39,7 @@ namespace API.Data
             builder.Entity<MoneyAccount>()
                 .HasMany(t => t.Transactions)
                 .WithOne(a => a.BaseMoneyAccount)
-                .HasForeignKey(at => at.Id)
-                .IsRequired();
-
-            builder.Entity<MoneyAccount>()
-                .HasMany(t => t.Transactions)
-                .WithOne(a => a.BaseMoneyAccount)
-                .HasForeignKey(at => at.Id)
+                .HasForeignKey(at => at.BaseMoneyAccountId)
                 .IsRequired();
 
             builder.Entity<AppUser>()

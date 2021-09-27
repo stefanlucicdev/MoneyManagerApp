@@ -22,6 +22,9 @@ namespace API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("BaseMoneyAccountId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Category")
                         .HasColumnType("TEXT");
 
@@ -41,6 +44,8 @@ namespace API.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BaseMoneyAccountId");
 
                     b.ToTable("Transactions");
                 });
@@ -304,7 +309,7 @@ namespace API.Data.Migrations
                 {
                     b.HasOne("API.Entities.MoneyAccount", "BaseMoneyAccount")
                         .WithMany("Transactions")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("BaseMoneyAccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

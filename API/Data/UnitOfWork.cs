@@ -19,6 +19,7 @@ namespace API.Data
         }
 
         public IUserRepository UserRepository => new UserRepository(_context, _mapper);
+        public IMoneyAccountRepository MoneyAccountRepository => new MoneyAccountRepository(_context);
 
         public async Task<bool> Complete()
         {

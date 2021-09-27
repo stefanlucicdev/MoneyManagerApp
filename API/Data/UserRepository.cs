@@ -47,5 +47,10 @@ namespace API.Data
         {
             return await _context.MoneyAccounts.Where(moneyAccount => moneyAccount.OwnerId == id).ToListAsync();               
         }
+
+        public async Task<MoneyAccount> GetMoneyAccountByIdAsync(int id)
+        {
+            return await _context.MoneyAccounts.FindAsync(id);
+        }
     }
 }

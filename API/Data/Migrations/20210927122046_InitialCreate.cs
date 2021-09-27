@@ -195,6 +195,7 @@ namespace API.Data.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    BaseMoneyAccountId = table.Column<int>(type: "INTEGER", nullable: false),
                     TransactionValue = table.Column<int>(type: "INTEGER", nullable: false),
                     DateAdded = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Category = table.Column<string>(type: "TEXT", nullable: true),
@@ -206,8 +207,8 @@ namespace API.Data.Migrations
                 {
                     table.PrimaryKey("PK_Transactions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Transactions_MoneyAccounts_Id",
-                        column: x => x.Id,
+                        name: "FK_Transactions_MoneyAccounts_BaseMoneyAccountId",
+                        column: x => x.BaseMoneyAccountId,
                         principalTable: "MoneyAccounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -254,6 +255,11 @@ namespace API.Data.Migrations
                 name: "IX_MoneyAccounts_OwnerId",
                 table: "MoneyAccounts",
                 column: "OwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transactions_BaseMoneyAccountId",
+                table: "Transactions",
+                column: "BaseMoneyAccountId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -39,7 +39,8 @@ namespace API.Controllers
                 Name = moneyAccountDto.Name,
                 ExcludeFromTotal = moneyAccountDto.ExcludeFromTotal,
                 Currency = moneyAccountDto.Currency,
-                InitialBalance = moneyAccountDto.InitialBalance
+                InitialBalance = moneyAccountDto.InitialBalance,
+                CurrentBalance = moneyAccountDto.InitialBalance
             };
 
             _unitOfWork.UserRepository.AddMoneyAccount(moneyAccount);

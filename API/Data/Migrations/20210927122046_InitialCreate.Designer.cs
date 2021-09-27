@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210912134309_InitialCreate")]
+    [Migration("20210927122046_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,6 +22,9 @@ namespace API.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("BaseMoneyAccountId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Category")
@@ -43,6 +46,8 @@ namespace API.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BaseMoneyAccountId");
 
                     b.ToTable("Transactions");
                 });
@@ -306,7 +311,7 @@ namespace API.Data.Migrations
                 {
                     b.HasOne("API.Entities.MoneyAccount", "BaseMoneyAccount")
                         .WithMany("Transactions")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("BaseMoneyAccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

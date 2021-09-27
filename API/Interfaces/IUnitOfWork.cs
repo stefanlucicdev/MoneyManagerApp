@@ -8,6 +8,7 @@ namespace API.Interfaces
     public interface IUnitOfWork
     {
         IUserRepository UserRepository { get; }
+        IMoneyAccountRepository MoneyAccountRepository { get; }
         Task<bool> Complete();
         bool HasChanges();
     }
