@@ -21,7 +21,10 @@ export class MembersService {
   }
 
   addMoneyAccount(model: any) {
-    //const headers = { 'content-type': 'application/json' };
     return this.http.post(this.baseUrl + 'users/add-account', model).subscribe(r => { });
+  }
+
+  getMoneyAccounts() {
+    return this.http.get<MoneyAccount[]>(this.baseUrl + 'users/accounts');
   }
 }

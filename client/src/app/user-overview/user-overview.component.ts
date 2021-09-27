@@ -15,10 +15,12 @@ export class UserOverviewComponent implements OnInit {
   bsModalRef: BsModalRef;
   moneyAccount: MoneyAccount;
   user: User;
+  accounts: MoneyAccount[];
 
   constructor(private modalService: BsModalService, private memberService: MembersService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getMoneyAccounts();
   }
 
   openAddMoneyAccountModal(user: User) {
@@ -28,5 +30,11 @@ export class UserOverviewComponent implements OnInit {
       }
     }
     this.bsModalRef = this.modalService.show(AddMoneyAccountComponent, config);
+  }
+
+  getMoneyAccounts() {
+    return this.memberService.getMoneyAccounts().subscribe(response => {
+      this.accounts = response;
+    })
   }
 }

@@ -28,8 +28,6 @@ namespace API.Controllers
         [HttpPost("add-account")]
         public async Task<ActionResult> AddMoneyAccount(MoneyAccountDto moneyAccountDto)
         {
-            //var owner = await _unitOfWork.UserRepository.GetUserByIdAsync(moneyAccountDto.OwnerId);
-
             var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(User.GetUsername());
 
             if (user != null) { 
@@ -50,6 +48,22 @@ namespace API.Controllers
             }
 
             return BadRequest("Failed to add a money account");
+        }
+
+        [HttpGet("accounts")]
+        public async Task<ActionResult<IEnumerable<MoneyAccount>>> GetMoneyAccounts()
+        {
+            var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(User.GetUsername());
+
+            if (user != null) {
+
+            var moneyAccounts = await _unitOfWork.UserRepository.GetMoneyAccountsAsync(user.Id);
+
+            return Ok(moneyAccounts);
+            
+            }
+
+            return BadRequest("Failed to get money accounts");
         }
     }
 }

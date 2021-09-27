@@ -3,4 +3,5 @@ export interface MoneyAccount {
   excludeFromTotal: boolean;
   currency: string;
   initialBalance: number;
+  currentBalance: number;
 }

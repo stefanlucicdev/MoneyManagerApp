@@ -34,7 +34,7 @@ import { AddMoneyAccountComponent } from './modals/add-money-account/add-money-a
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

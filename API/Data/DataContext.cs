@@ -42,6 +42,12 @@ namespace API.Data
                 .HasForeignKey(at => at.Id)
                 .IsRequired();
 
+            builder.Entity<MoneyAccount>()
+                .HasMany(t => t.Transactions)
+                .WithOne(a => a.BaseMoneyAccount)
+                .HasForeignKey(at => at.Id)
+                .IsRequired();
+
             builder.Entity<AppUser>()
                 .HasMany(ur => ur.UserRoles)
                 .WithOne(u => u.User)

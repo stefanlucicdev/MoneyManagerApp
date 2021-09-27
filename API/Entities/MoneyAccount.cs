@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using API.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace API.Entities
 {
@@ -15,6 +16,7 @@ namespace API.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public int OwnerId { get; set; }
+        [JsonIgnore]
         public AppUser Owner { get; set; }
         public bool ExcludeFromTotal { get; set; }
         public string Currency { get; set; }

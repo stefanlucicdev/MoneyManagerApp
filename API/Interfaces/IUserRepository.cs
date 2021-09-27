@@ -14,5 +14,6 @@ namespace API.Interfaces
         Task<AppUser> GetUserByIdAsync(int id);
         void AddMoneyAccount(MoneyAccount moneyAccount);
         Task<AppUser> GetUserByUsernameAsync(string username);
+        Task<IEnumerable<MoneyAccount>> GetMoneyAccountsAsync(int id);
     }
 }
